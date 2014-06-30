@@ -9,13 +9,8 @@ This script uses and downloads pre-generated *.osm.pbf files from geofabrik.de.
 
 
 ### HOW TO ###
-When the script is downloaded, you need to make it executable with: 
-
-    chmod +x mapgen
-
 
 Before your run the script, you may take a look inside it and change some stuff, i.e. the name of country you would like to map a map for.
-
 
 You run it with:
 
