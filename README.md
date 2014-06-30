@@ -55,6 +55,7 @@ But right now i have implemented this stuff:
 * Builds maps ready to use in Garmin GPS units.
 * Downloads srtm3 (topographic) data and creates pbf files of them.
 * Builds garmin image files of the topographic data.
+* Download polygon file.
 * Merging of standard map and topographic map.
 * Move function to move the ready garmin image files to wherever you want them to be.
 * Cleaning function to remove unecessary files after you have built your map completely.
