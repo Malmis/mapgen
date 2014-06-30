@@ -33,7 +33,7 @@ The output of ./mapgen will be:
     -a eller args (Skapar lista över alla filer som ska slås ihop.)
     -k eller kust (Laddar ner kustlinjer för din karta. Behöver bara köras en gång.)
     -b eller build (Genererar standardkarta.)
-    -p eller polygon (Laddar ner polygon för $countryname.)
+    -p eller polygon (Laddar ner polygon för $countryname. Behöver bara köras en gång per land.)
     -pbf eller pbf-files (Genererar pbf-filer för topografiska linjer.)
     -img eller image-files (Genererar image filer för topografisk karta.)
     -me eller merge (Slår ihop standardkartan med topografiska linjer.)
