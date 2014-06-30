@@ -71,9 +71,9 @@ map_mkgmap1="--copyright-message=$copyright --generate-sea=extend-sea-sectors,fl
 map_mkgmap2="--drive-on-right --check-roundabouts --road-name-pois --ignore-osm-bounds --make-poi-index --adjust-turn-headings --ignore-maxspeeds --ignore-turn-restrictions --coastlinefile=$coastline/$coastfile"
 map_mkgmap3="--product-id=$productid --family-id=$familyid --mapname=$mapname --country-name=$countryname --family-name=$familyname --country-abbr=$countryabbr --area-name=$areaname --nsis --tdbfile"
 map_mkgmap4="--remove-ovm-work-files --location-autofill=bounds,nearest,is_in --name-tag-list=name:fi,name:sv,name:no,name:dk,name:en,name --description=$description --show-profiles=1 --gmapsupp -c new.args"
-map_merge="--show-profiles=1 --gmapsupp $countrydir/gmapsupp.img $topodir/gmapsupp.img"
+map_merge="--show-profiles=1 --gmapsupp $countrydir/gmapsupp.img $topodir/srtm/gmapsupp.img"
 
-topo_mkgmap="--max-jobs=2 --gmapsupp --mapname=$topoid --description=$countryname-Topo"
+topo_mkgmap="--max-jobs=2 --gmapsupp --mapname=$topoid --description=$countryname-Topographic"
 topo2_mkgmap="--area-name=$countryname --read-config=~/styles/contours/options --style-file=~/styles/contours ~/styles/contours.txt $topodir/srtm/*.osm.pbf"
 topo_exec=phyghtmap
 topo_pbf="--step=20 --line-cat=400,100 --source=view3 --polygon=$polygons/$country.poly --pbf --output-prefix=contour"
@@ -205,7 +205,7 @@ case $@ in
     ;;
   -img|image-files)
     echo "Genererar topografiska image filer ..."
-    cd $topodir
+    cd $topodir/srtm
     exec $EXEC4
     if [ $? -gt 0 ]
     then
