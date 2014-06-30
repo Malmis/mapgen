@@ -1,0 +1,199 @@
+#!/bin/bash
+# -- INFORMATION -------------------------------- #
+#
+# Script created by Kristoffer Malmström (Malmis)
+#
+# This script requires java and needs following tools to work:
+# mkgmap, splitter
+#
+# They will be installed with ./mapgen install or ./mapgen -i
+#
+# ----------------------------------------------- #
+
+# -- for installation -- #
+workdir=~/workdir # Where everything happens
+styles=~/styles # Where you put your style files
+coastline=~/coastline # Where coastlines are downloaded
+tools=~/tools # Where mkgmap and splitter installs
+movdir=~/public_html/garmin # Could be changed to wherever you want to move your maps.
+tmp=~/tmp # Temporary directory for Java.
+javamem=2G # How much memory Java will use, could be changed to whatever you want to use, maximum your computers amount of memory.
+mkgmaprev=3311 # Could be changed to latest mkgmap revision.
+splitterrev=412 # Could be changed to latest splitter revision.
+# ---------------------- #
+
+# -- change for other country -- #
+country=sweden # countryname in lowercase
+countryname=Sweden # Countryname starts with capital letter (i.e. Sweden, Denmark, Finland, Norway etc.)
+countryabr=SWE # Country abbreviation with 3 uppercase letters (i.e. SWE, DEN, FIN, NOR etc.
+famid=355 # Family ID
+mapid=33110000 # Map ID - change for every map, otherwise it will conflict with other maps and crash GPS. (i.e. 33110000 for Sweden, 33220000 for Denmark, 33330000 for Finland, 33440000 for Norway etc.)
+world=europe # could be europe, south-america, north-america, central-america, asia, australia-oceania, antarctica, africa (this is not the same as the coast variable)
+coast=europe # could be planet or europe (Important to use planet if you create maps outside europe, but planet could also be used for countries in europe. The europe file is about 150mb smaller.)
+stylefile1=malmis.zip
+stylefile2=malmis.txt
+creator=Malmis # Your nickname
+
+# -- do not change -- #
+if [ -z "$javacmd" ] ; then
+  javacmd=java
+fi
+javacmd_options="-Xmx$javamem -Djava.io.tmpdir=$tmp"
+mkgmap_op="-ea -jar /home/osm/tools/mkgmap-r3308/mkgmap.jar"
+splitter_op="-jar /home/osm/tools/splitter/splitter.jar"
+DATE=$(date +'%Y-%m-%d')
+scriptname=$country-gen
+countryfile=$country-latest.osm.pbf
+countrydir=$workdir/$country
+contourdir=$countrydir/srtm
+contourdir2=$workdir/contours/$country
+coastfile=coastlines_$coast-latest.osm.pbf
+stylefile=$styles/$stylefile1
+inputfile=$styles/$stylefile2
+mapid2=$mapid
+productid=1
+familyid=$famid
+mapname=$mapid
+maxnodes=1000000
+overlap=0
+maxareas=255
+statusfreq=600
+countryname=$countryname
+familyname=OSM-$countryname-Malmis-$DATE
+countryabbr=$countryabr
+areaname=$countryname
+copyright="http://www.openstreetmap.org/copyright"
+description="$DATE-$creator-OpenStreetMap"
+
+map_split="--mapid=$mapid2 --output=pbf --max-nodes=$maxnodes --overlap=$overlap --keep-complete=true --max-areas=$maxareas --status-freq=$statusfreq --no-trim"
+map_mkgmap0="--input-file=$inputfile --style-file=$stylefile --check-styles --max-jobs --draw-priority=20 --route --latin1" 
+map_mkgmap1="--copyright-message=$copyright --generate-sea=extend-sea-sectors,floodblocker,land-tag=natural=background"
+map_mkgmap2="--drive-on-right --check-roundabouts --road-name-pois --ignore-osm-bounds --make-poi-index --adjust-turn-headings --ignore-maxspeeds --ignore-turn-restrictions --coastlinefile=$coastline/$coastfile"
+map_mkgmap3="--product-id=$productid --family-id=$familyid --mapname=$mapname --country-name=$countryname --family-name=$familyname --country-abbr=$countryabbr --area-name=$areaname --nsis --tdbfile"
+map_mkgmap4="--remove-ovm-work-files --location-autofill=bounds,nearest,is_in --name-tag-list=name:fi,name:sv,name:no,name:dk,name:en,name --description=$description --show-profiles=1 --gmapsupp -c nyfil.args"
+#map_mkgmap_contour="--family-id=$familyid --product-id=$productid --family-name=contours --draw-priority=30 --remove-ovm-work-files --transparent --gmapsupp ../$contrydir/*.osm.pbf"
+map_merge="--show-profiles=1 --gmapsupp $countrydir/gmapsupp.img $contourdir2/gmapsupp.img"
+
+mkgmap_exec="$javacmd $javacmd_options $mkgmap_op $map_mkgmap0 $map_mkgmap1 $map_mkgmap2 $map_mkgmap3 $map_mkgmap4"
+mkgmap_merge="$javacmd $javacmd_options $mkgmap_op $map_merge"
+
+EXEC1="$javacmd $javacmd_options $splitter_op $map_split $countryfile"
+EXEC2="$mkgmap_exec"
+EXEC3="$mkgmap_merge"
+
+case $@ in
+
+  -i|install)
+    echo "Installerar script, mappar och verktyg  ...."
+    mkdir -p $workdir
+	mkdir -p $styles
+	mkdir -p $tools
+	mkdir -p $coastline
+	mkdir -p $workdir/$country
+	mkdir -p $contourdir
+	mkdir -p $contourdir2
+	mkdir -p $movdir/garmin
+	mv $scriptname $workdir/
+	cd $tools
+	wget -qO- -O mkgmap.zip http://www.mkgmap.org.uk/download/mkgmap-r$mkgmaprev.zip && unzip mkgmap.zip && rm mkgmap.zip
+	wget -qO- -O splitter.zip http://www.mkgmap.org.uk/download/splitter-r$splitterrev.zip && unzip splitter.zip && rm splitter.zip
+	echo "Scriptfilen $scriptname finns nu i $workdir och verktygen mkgmap och splitter finns nu i $tools/mkgmap-r$mkgmaprev och $tools/splitter-r$splitterrev."
+	echo "Nu kan du skapa dina egna kartor, men ändra i $scriptname först till det land du vill göra en karta. Kör sedan ./$scriptname -h för att se hur du använder det."
+    if [ $? -gt 0 ]
+    then
+       echo *** Installationen misslyckades
+       exit 1
+    fi
+    ;;
+  -d|download)
+	echo "Laddar ner $countryfile ...."
+	cd $countrydir
+	# Tar bort fil om den redan existerar
+	[ -f $countryfile ] && rm $countryfile
+	wget --no-cache http://download.geofabrik.de/$world/$countryfile
+	if [ $? -gt 0 ]
+    then
+       echo *** Nedladdning misslyckades
+       exit 1
+	fi
+	;;
+  -s|split)
+	echo "Splittrar $countryfile ...."
+	cd $countrydir
+	exec $EXEC1
+	if [ $? -gt 0 ]
+	then
+	   echo *** Splittring misslyckades
+	   exit 1
+	fi
+	;;
+  -a|args)
+	echo "Genererar ny args fil."
+	cd $countrydir
+	../argsfil$country
+	if [ $? -gt 0 ]
+	then
+	   echo *** Generering av nyfil.args misslyckades
+	   exit 1
+	fi
+	;;
+  -k|kust)
+    echo "Laddar ner kustlinje ...."
+    cd $coastline
+    wget http://fabianowski.eu/osm/coastlines/$coastfile
+    if [ $? -gt 0 ]
+    then
+       echo *** Nedladdning av kustlinje misslyckades
+       exit 1
+    fi
+    ;;
+  -b|build)
+	echo "Genererar Garmin karta ...."
+	cd $countrydir
+	exec $EXEC2
+	if [ $? -gt 0 ]
+	then
+	   echo *** Kartgenerering misslyckades
+	   exit 1
+	fi
+	echo "Färdig!"
+	;;
+  -me|merge)
+	echo "Slår samman kartor ...."
+	cd $contourdir
+	exec $EXEC3
+    if [ $? -gt 0 ]
+    then
+       echo *** Sammanslagning av kartor misslyckades
+       exit 1
+    fi
+    ;;
+  -c|clean)
+	echo "Rensar bort filer ...."
+	rm $countrydir/*.*
+	rm $contourdir/*.*
+	;;
+  -m|move)
+	echo "Flyttar kartfil ...."
+	cd $countrydir
+	mv gmapsupp.img $movdir/$countryname-$DATE.img
+	;;
+  -m2|move2)
+    echo "Flyttar kartfil ...."
+	cd $contourdir
+    mv gmapsupp.img $movdir/$countryname-topo-$DATE.img
+    ;;
+  *)
+    echo "Dessa kan du använda:"
+	echo "-i eller install (Behöver bara köras första gången.)"
+	echo "-d eller download (Laddar ner OSM data för $countryname.)"
+	echo "-s eller split (Splittar och förbereder filer.)"
+	echo "-a eller args (Skapar lista över alla filer som ska slås ihop.)"
+	echo "-b eller build (Genererar standardkarta.)"
+	echo "-me eller merge (Slår ihop standardkartan med topografiska linjer.)"
+	echo "-m eller move (Flyttar standardkarta till $movdir/.)"
+	echo "-m2 eller move2 (Flyttar karta med topografiska linjer till $movdir/.)"
+	echo "-c eller clean (Rensar bort alla filer för $countryname efter att inte gamla filer ska ligga kvar nästa gång du vill skapa en ny karta.)"
+    exit 1
+    ;;
+esac
