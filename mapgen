@@ -47,11 +47,10 @@ DATE=$(date +'%Y-%m-%d')
 scriptname=mapgen
 countryfile=$country-latest.osm.pbf
 countrydir=$workdir/$country
-contourdir=$workdir/contours/$country
+topodir=$workdir/contours/$country
 coastfile=coastlines_$coast-latest.osm.pbf
 stylefile=$styles/$stylefile1
 inputfile=$styles/$stylefile2
-mapid2=$mapid
 productid=1
 familyid=$famid
 mapname=$mapid
@@ -60,23 +59,22 @@ overlap=0
 maxareas=255
 statusfreq=600
 countryname=$countryname
-familyname=OSM-$countryname-Malmis-$DATE
+familyname=OSM-$countryname-$DATE
 countryabbr=$countryabr
 areaname=$countryname
 copyright="http://www.openstreetmap.org/copyright"
 description="$DATE-$creator-OpenStreetMap"
 
-map_split="--mapid=$mapid2 --output=pbf --max-nodes=$maxnodes --overlap=$overlap --keep-complete=true --max-areas=$maxareas --status-freq=$statusfreq --no-trim"
+map_split="--mapid=$mapid --output=pbf --max-nodes=$maxnodes --overlap=$overlap --keep-complete=true --max-areas=$maxareas --status-freq=$statusfreq --no-trim"
 map_mkgmap0="--input-file=$inputfile --style-file=$stylefile --check-styles --max-jobs --draw-priority=20 --route --latin1" 
 map_mkgmap1="--copyright-message=$copyright --generate-sea=extend-sea-sectors,floodblocker,land-tag=natural=background"
 map_mkgmap2="--drive-on-right --check-roundabouts --road-name-pois --ignore-osm-bounds --make-poi-index --adjust-turn-headings --ignore-maxspeeds --ignore-turn-restrictions --coastlinefile=$coastline/$coastfile"
 map_mkgmap3="--product-id=$productid --family-id=$familyid --mapname=$mapname --country-name=$countryname --family-name=$familyname --country-abbr=$countryabbr --area-name=$areaname --nsis --tdbfile"
-map_mkgmap4="--remove-ovm-work-files --location-autofill=bounds,nearest,is_in --name-tag-list=name:fi,name:sv,name:no,name:dk,name:en,name --description=$description --show-profiles=1 --gmapsupp -c new.args"
-#map_mkgmap_contour="--family-id=$familyid --product-id=$productid --family-name=contours --draw-priority=30 --remove-ovm-work-files --transparent --gmapsupp ../$contrydir/*.osm.pbf"
-map_merge="--show-profiles=1 --gmapsupp $countrydir/gmapsupp.img $contourdir/gmapsupp.img"
+map_mkgmap4="--remove-ovm-work-files --location-autofill=bounds,nearest,is_in --name-tag-list=name:fi,name:sv,name:no,name:dk,name:en,name --description=$description --gmapsupp -c new.args"
+map_merge="--show-profiles=1 --gmapsupp $topodir/gmapsupp.img $countrydir/gmapsupp.img"
 
 topo_mkgmap="--max-jobs=2 --keep-going --gmapsupp --mapname=$topoid --description=$countryname-Topo"
-topo2_mkgmap="--area-name=$countryname --read-config=$styles/contours/options --style-file=$styles/contours $styles/contours.txt $contourdir/srtm/*.pbf"
+topo2_mkgmap="--area-name=$countryname --read-config=$styles/contours/options --style-file=$styles/contours $styles/contours.txt $topodir/srtm/*.pbf"
 topo_exec=phyghtmap
 topo_pbf="--step=20 --line-cat=400,100 --source=view3 --polygon=$polygons/$country.poly --pbf --output-prefix=contour"
 
@@ -98,8 +96,8 @@ case $@ in
     mkdir -p $tools
     mkdir -p $coastline
     mkdir -p $workdir/$country
-    mkdir -p $contourdir
-    mkdir -p $contourdir/srtm
+    mkdir -p $topodir
+    mkdir -p $topodir/srtm
     mkdir -p $polygons
     mkdir -p $movdir
     cp $scriptname $workdir/mapgen-$country
@@ -172,7 +170,7 @@ case $@ in
     ;;
   -me|merge)
     echo "Slår samman kartor ..."
-    cd $contourdir
+    cd $topodir
     exec $EXEC3
     if [ $? -gt 0 ]
     then
@@ -183,7 +181,7 @@ case $@ in
   -c|clean)
     echo "Rensar bort filer ..."
     rm $countrydir/*.*
-    rm $contourdir/*.*
+    rm $topodir/*.*
     ;;
   -m|move)
     echo "Flyttar kartfil ..."
@@ -192,12 +190,12 @@ case $@ in
     ;;
   -m2|move2)
     echo "Flyttar kartfil ..."
-    cd $contourdir
+    cd $topodir
     mv gmapsupp.img $movdir/$countryname-topo-$DATE.img
     ;;
   -pbf|pbf-files)
     echo "Genererar topografiska pbf filer ..."
-    cd $contourdir/srtm
+    cd $topodir/srtm
     exec $topo_exec $topo_pbf
     if [ $? -gt 0 ]
     then
@@ -207,7 +205,7 @@ case $@ in
     ;;
   -img|image-files)
     echo "Genererar topografiska image filer ..."
-    cd $contourdir
+    cd $topodir
     exec $EXEC4
     if [ $? -gt 0 ]
     then
