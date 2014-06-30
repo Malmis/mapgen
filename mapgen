@@ -141,7 +141,7 @@ case $@ in
   -a|args)
     echo "Genererar ny args fil ..."
     cd $countrydir
-    ../../tools/args
+    ../../tools/args$country
     if [ $? -gt 0 ]
     then
        echo *** Generering av new.args misslyckades
