@@ -92,7 +92,7 @@ EXEC4="$javacmd $javacmd_options $mkgmap_op $topo_mkgmap $topo2_mkgmap"
 case $@ in
 
   -i|install)
-    echo "Installerar script, mappar och verktyg  ...."
+    echo "Installerar script, mappar och verktyg  ..."
     mkdir -p $workdir
     mkdir -p $styles
 	cp -rf styles/* $styles/
@@ -119,7 +119,7 @@ case $@ in
     fi
     ;;
   -d|download)
-    echo "Laddar ner $countryfile ...."
+    echo "Laddar ner $countryfile ..."
     cd $countrydir
     # Tar bort fil om den redan existerar
     [ -f $countryfile ] && rm $countryfile
@@ -131,7 +131,7 @@ case $@ in
     fi
     ;;
   -s|split)
-    echo "Splittrar $countryfile ...."
+    echo "Splittrar $countryfile ..."
     cd $countrydir
     exec $EXEC1
     if [ $? -gt 0 ]
@@ -141,7 +141,7 @@ case $@ in
     fi
     ;;
   -a|args)
-    echo "Genererar ny args fil."
+    echo "Genererar ny args fil ..."
     cd $countrydir
     ../../tools/args
     if [ $? -gt 0 ]
@@ -151,7 +151,7 @@ case $@ in
     fi
     ;;
   -k|kust)
-    echo "Laddar ner kustlinje ...."
+    echo "Laddar ner kustlinje ..."
     cd $coastline
     wget http://fabianowski.eu/osm/coastlines/$coastfile
     if [ $? -gt 0 ]
@@ -161,7 +161,7 @@ case $@ in
     fi
     ;;
   -b|build)
-    echo "Genererar Garmin karta ...."
+    echo "Genererar Garmin karta ..."
     cd $countrydir
     exec $EXEC2
     if [ $? -gt 0 ]
@@ -172,7 +172,7 @@ case $@ in
     echo "Färdig!"
     ;;
   -me|merge)
-    echo "Slår samman kartor ...."
+    echo "Slår samman kartor ..."
     cd $contourdir
     exec $EXEC3
     if [ $? -gt 0 ]
@@ -182,22 +182,22 @@ case $@ in
     fi
     ;;
   -c|clean)
-    echo "Rensar bort filer ...."
+    echo "Rensar bort filer ..."
     rm $countrydir/*.*
     rm $contourdir/*.*
     ;;
   -m|move)
-    echo "Flyttar kartfil ...."
+    echo "Flyttar kartfil ..."
     cd $countrydir
     mv gmapsupp.img $movdir/$countryname-$DATE.img
     ;;
   -m2|move2)
-    echo "Flyttar kartfil ...."
+    echo "Flyttar kartfil ..."
     cd $contourdir2
     mv gmapsupp.img $movdir/$countryname-topo-$DATE.img
     ;;
   -pbf|pbf-files)
-    echo "Genererar topografiska pbf filer ...."
+    echo "Genererar topografiska pbf filer ..."
     cd $contourdir2
     exec $topo_exec $topo_pbf
     if [ $? -gt 0 ]
@@ -207,7 +207,7 @@ case $@ in
     fi
     ;;
   -img|image-files)
-    echo "Genererar topografiska image filer ...."
+    echo "Genererar topografiska image filer ..."
     cd $contourdir2
     exec $EXEC4
     if [ $? -gt 0 ]
@@ -217,7 +217,7 @@ case $@ in
     fi
     ;;
   -p|polygon)
-    echo "Laddar ner polygon för $countryname ...."
+    echo "Laddar ner polygon för $countryname ..."
     cd $polygons
 	wget --no-cache http://download.geofabrik.de/$world/$country.poly
     ;;
