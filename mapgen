@@ -227,7 +227,7 @@ case $@ in
     echo "-a eller args (Skapar lista över alla filer som ska slås ihop.)"
     echo "-k eller kust (Laddar ner kustlinjer för din karta. Behöver bara köras en gång.)"
     echo "-b eller build (Genererar standardkarta.)"
-	echo "-p eller polygon (Laddar ner polygon för $countryname. Behöver bara köras en gång per land.)"
+    echo "-p eller polygon (Laddar ner polygon för $countryname. Behöver bara köras en gång per land.)"
     echo "-pbf eller pbf-files (Genererar pbf-filer för topografiska linjer.)"
     echo "-img eller image-files (Genererar image filer för topografisk karta.)"
     echo "-me eller merge (Slår ihop standardkartan med topografiska linjer.)"
