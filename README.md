@@ -42,10 +42,21 @@ The output of ./mapgen will be:
 
 
 
-### Not complete ###
+### Functions ###
 The script is not completely done yet, so there are some missing functions in it right now.
 
-The topographic part needs another script that is right now a separately script, but it will soon be implemented.
+But right now i have implemented this stuff:
+* Complete one command installation (creates necessary directories and downloads styles and tools).
+* Download of country *.osm.pbf files from geofabrik.
+* Automated splitting of country file.
+* Creation of new args file.
+* Downloads coastlines with one command.
+* Builds maps ready to use in Garmin GPS units.
+* Downloads srtm3 (topographic) data and creates pbf files of them.
+* Builds garmin image files of the topographic data.
+* Merging of standard map and topographic map.
+* Move function to move the ready garmin image files to wherever you want them to be.
+* Cleaning function to remove unecessary files after you have built your map completely.
 
 
 ### Help & Contact ###
