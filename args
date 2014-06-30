@@ -1,0 +1,25 @@
+#!/usr/bin/perl
+
+print "Skapar ny .args-fil för Sverige ...\n";
+
+open(FIL, "template.args") or die"*** Kan inte öppna fil \"template.args\".\n";
+open(NYFIL, ">new.args") or die "Kan inte skapa fil \"new.args\".\n";
+while($line=<FIL>) {
+   
+   if($line =~ "mapname:") {
+      print $line;
+      print NYFIL "description: OSM map. Made by Malmis.\n";
+      print NYFIL "country-name: Sweden\n";
+      print NYFIL "country-abbr: SWE\n";
+   
+   }
+   if($line =~ "input-file:") {
+   print NYFIL $line;
+   print NYFIL "\n";
+
+   } 
+   
+}
+
+close FIL;
+close NYFIL;
