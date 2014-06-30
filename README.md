@@ -31,8 +31,9 @@ The output of ./mapgen will be:
     -d eller download (Laddar ner OSM data för Denmark.)
     -s eller split (Splittar och förbereder filer.)
     -a eller args (Skapar lista över alla filer som ska slås ihop.)
-    -k eller kust (Laddar ner kustlinjer.)
+    -k eller kust (Laddar ner kustlinjer för din karta. Behöver bara köras en gång.)
     -b eller build (Genererar standardkarta.)
+    -p eller polygon (Laddar ner polygon för $countryname.)
     -pbf eller pbf-files (Genererar pbf-filer för topografiska linjer.)
     -img eller image-files (Genererar image filer för topografisk karta.)
     -me eller merge (Slår ihop standardkartan med topografiska linjer.)
@@ -54,6 +55,7 @@ But right now i have implemented this stuff:
 * Builds maps ready to use in Garmin GPS units.
 * Downloads srtm3 (topographic) data and creates pbf files of them.
 * Builds garmin image files of the topographic data.
+* Download polygon file.
 * Merging of standard map and topographic map.
 * Move function to move the ready garmin image files to wherever you want them to be.
 * Cleaning function to remove unecessary files after you have built your map completely.
