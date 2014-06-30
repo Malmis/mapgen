@@ -2,5 +2,5 @@ draw-priority=30
 transparent
 merge-lines
 levels = 0:24, 1:23, 2:22, 3:20, 4:18
-family-name=contours
-series-name=contours
+family-name=Topographic
+series-name=Topographic
