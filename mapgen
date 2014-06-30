@@ -104,7 +104,7 @@ case $@ in
     cd $tools
     wget -qO- -O mkgmap.zip http://www.mkgmap.org.uk/download/mkgmap-r$mkgmaprev.zip && unzip mkgmap.zip && rm mkgmap.zip
     wget -qO- -O splitter.zip http://www.mkgmap.org.uk/download/splitter-r$splitterrev.zip && unzip splitter.zip && rm splitter.zip
-    cp -rf args $tools/args$country
+    cp -rf ~/mapgen/args $tools/args$country
     #cd $tools
     #wget --no-cache https://raw.githubusercontent.com/Malmis/mapgen/master/args
     #chmod +x args
