@@ -43,7 +43,7 @@ javacmd_options="-Xmx$javamem -Djava.io.tmpdir=$tmp"
 mkgmap_op="-ea -jar /home/osm/tools/mkgmap-r3308/mkgmap.jar"
 splitter_op="-jar /home/osm/tools/splitter/splitter.jar"
 DATE=$(date +'%Y-%m-%d')
-scriptname=$country-gen
+scriptname=mapgen
 countryfile=$country-latest.osm.pbf
 countrydir=$workdir/$country
 contourdir=$countrydir/srtm
@@ -100,12 +100,12 @@ case $@ in
     mkdir -p $contourdir
     mkdir -p $contourdir2
     mkdir -p $movdir
-    mv $scriptname $workdir/
+    cp $scriptname $workdir/mapgen-$country
     cd $tools
     wget -qO- -O mkgmap.zip http://www.mkgmap.org.uk/download/mkgmap-r$mkgmaprev.zip && unzip mkgmap.zip && rm mkgmap.zip
     wget -qO- -O splitter.zip http://www.mkgmap.org.uk/download/splitter-r$splitterrev.zip && unzip splitter.zip && rm splitter.zip
-    echo "Scriptfilen $scriptname finns nu i $workdir och verktygen mkgmap och splitter finns nu i $tools/mkgmap-r$mkgmaprev och $tools/splitter-r$splitterrev."
-    echo "Nu kan du skapa dina egna kartor, men ändra i $scriptname först till det land du vill göra en karta. Kör sedan ./$scriptname -h för att se hur du använder det."
+    echo "Scriptfilen mapgen-$country finns nu i $workdir och verktygen mkgmap och splitter finns nu i $tools/mkgmap-r$mkgmaprev och $tools/splitter-r$splitterrev."
+    echo "Nu kan du skapa dina egna kartor, Gå till $workdir och kör sedan ./mapgen-$country -h för att se hur du använder det."
     if [ $? -gt 0 ]
     then
        echo *** Installationen misslyckades
