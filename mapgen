@@ -92,7 +92,7 @@ case $@ in
     echo "Installerar script, mappar och verktyg  ..."
     mkdir -p $workdir
     mkdir -p $styles
-	cp -rf styles/* $styles/
+    cp -rf styles/* $styles/
     mkdir -p $tools
     mkdir -p $coastline
     mkdir -p $workdir/$country
@@ -104,9 +104,10 @@ case $@ in
     cd $tools
     wget -qO- -O mkgmap.zip http://www.mkgmap.org.uk/download/mkgmap-r$mkgmaprev.zip && unzip mkgmap.zip && rm mkgmap.zip
     wget -qO- -O splitter.zip http://www.mkgmap.org.uk/download/splitter-r$splitterrev.zip && unzip splitter.zip && rm splitter.zip
-	cd $tools
-	wget --no-cache https://raw.githubusercontent.com/Malmis/mapgen/master/args
-	chmod +x args
+    cp -rf args $tools/args$country
+    #cd $tools
+    #wget --no-cache https://raw.githubusercontent.com/Malmis/mapgen/master/args
+    #chmod +x args
     echo "Scriptfilen mapgen-$country finns nu i $workdir och verktygen mkgmap och splitter finns nu i $tools/mkgmap-r$mkgmaprev och $tools/splitter-r$splitterrev."
     echo "Nu kan du skapa dina egna kartor, Gå till $workdir och kör sedan ./mapgen-$country -h för att se hur du använder det."
     if [ $? -gt 0 ]
