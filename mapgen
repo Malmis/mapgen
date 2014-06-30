@@ -28,6 +28,7 @@ countryname=Sweden # Countryname starts with capital letter (i.e. Sweden, Denmar
 countryabr=SWE # Country abbreviation with 3 uppercase letters (i.e. SWE, DEN, FIN, NOR etc.
 famid=355 # Family ID
 mapid=33110000 # Map ID - change for every map, otherwise it will conflict with other maps and crash GPS. (i.e. 33110000 for Sweden, 33220000 for Denmark, 33330000 for Finland, 33440000 for Norway etc.)
+topoid=22110000 # Map ID for Topo
 world=europe # could be europe, south-america, north-america, central-america, asia, australia-oceania, antarctica, africa (this is not the same as the coast variable)
 coast=europe # could be planet or europe (Important to use planet if you create maps outside europe, but planet could also be used for countries in europe. The europe file is about 150mb smaller.)
 stylefile1=malmis.zip
@@ -74,12 +75,18 @@ map_mkgmap4="--remove-ovm-work-files --location-autofill=bounds,nearest,is_in --
 #map_mkgmap_contour="--family-id=$familyid --product-id=$productid --family-name=contours --draw-priority=30 --remove-ovm-work-files --transparent --gmapsupp ../$contrydir/*.osm.pbf"
 map_merge="--show-profiles=1 --gmapsupp $countrydir/gmapsupp.img $contourdir2/gmapsupp.img"
 
+topo_mkgmap="--max-jobs=2 --keep-going --gmapsupp --mapname=$topoid --description=$countryname-Topo"
+topo2_mkgmap="--area-name=$countryname --read-config=../../../styles/contours/options --style-file=../../../styles/contours ../../../styles/contours.txt $contourdir2/*.pbf"
+topo_exec=phyghtmap
+topo_pbf="--step=20 --line-cat=400,100 --source=view3 --polygon=../../../polygons/$country.poly --pbf --output-prefix=contour"
+
 mkgmap_exec="$javacmd $javacmd_options $mkgmap_op $map_mkgmap0 $map_mkgmap1 $map_mkgmap2 $map_mkgmap3 $map_mkgmap4"
 mkgmap_merge="$javacmd $javacmd_options $mkgmap_op $map_merge"
 
 EXEC1="$javacmd $javacmd_options $splitter_op $map_split $countryfile"
 EXEC2="$mkgmap_exec"
 EXEC3="$mkgmap_merge"
+EXEC4="$javacmd $javacmd_options $mkgmap_op $topo_mkgmap $topo2_mkgmap"
 
 case $@ in
 
@@ -180,9 +187,29 @@ case $@ in
 	;;
   -m2|move2)
     echo "Flyttar kartfil ...."
-	cd $contourdir
+	cd $contourdir2
     mv gmapsupp.img $movdir/$countryname-topo-$DATE.img
     ;;
+  -pbf|pbf-files)
+    echo "Genererar topografiska pbf filer ...."
+    cd $contourdir2
+    exec $topo_exec $topo_pbf
+    if [ $? -gt 0 ]
+    then
+       echo *** Generering misslyckades
+       exit 1
+    fi
+    ;;
+  -img|image-files)
+    echo "Genererar topografiska image filer ...."
+    cd $contourdir2
+    exec $EXEC4
+    if [ $? -gt 0 ]
+    then
+       echo *** Generering misslyckades
+       exit 1
+    fi
+    ;;	
   *)
     echo "Dessa kan du använda:"
 	echo "-i eller install (Behöver bara köras första gången.)"
@@ -190,6 +217,8 @@ case $@ in
 	echo "-s eller split (Splittar och förbereder filer.)"
 	echo "-a eller args (Skapar lista över alla filer som ska slås ihop.)"
 	echo "-b eller build (Genererar standardkarta.)"
+    echo "-pbf eller pbf-files (Genererar pbf-filer för topografiska linjer.)"
+    echo "-img eller image-files (Genererar image filer för topografisk karta.)"	
 	echo "-me eller merge (Slår ihop standardkartan med topografiska linjer.)"
 	echo "-m eller move (Flyttar standardkarta till $movdir/.)"
 	echo "-m2 eller move2 (Flyttar karta med topografiska linjer till $movdir/.)"
