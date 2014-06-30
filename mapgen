@@ -93,19 +93,19 @@ case $@ in
   -i|install)
     echo "Installerar script, mappar och verktyg  ...."
     mkdir -p $workdir
-	mkdir -p $styles
-	mkdir -p $tools
-	mkdir -p $coastline
-	mkdir -p $workdir/$country
-	mkdir -p $contourdir
-	mkdir -p $contourdir2
-	mkdir -p $movdir/garmin
-	mv $scriptname $workdir/
-	cd $tools
-	wget -qO- -O mkgmap.zip http://www.mkgmap.org.uk/download/mkgmap-r$mkgmaprev.zip && unzip mkgmap.zip && rm mkgmap.zip
-	wget -qO- -O splitter.zip http://www.mkgmap.org.uk/download/splitter-r$splitterrev.zip && unzip splitter.zip && rm splitter.zip
-	echo "Scriptfilen $scriptname finns nu i $workdir och verktygen mkgmap och splitter finns nu i $tools/mkgmap-r$mkgmaprev och $tools/splitter-r$splitterrev."
-	echo "Nu kan du skapa dina egna kartor, men ändra i $scriptname först till det land du vill göra en karta. Kör sedan ./$scriptname -h för att se hur du använder det."
+    mkdir -p $styles
+    mkdir -p $tools
+    mkdir -p $coastline
+    mkdir -p $workdir/$country
+    mkdir -p $contourdir
+    mkdir -p $contourdir2
+    mkdir -p $movdir/garmin
+    mv $scriptname $workdir/
+    cd $tools
+    wget -qO- -O mkgmap.zip http://www.mkgmap.org.uk/download/mkgmap-r$mkgmaprev.zip && unzip mkgmap.zip && rm mkgmap.zip
+    wget -qO- -O splitter.zip http://www.mkgmap.org.uk/download/splitter-r$splitterrev.zip && unzip splitter.zip && rm splitter.zip
+    echo "Scriptfilen $scriptname finns nu i $workdir och verktygen mkgmap och splitter finns nu i $tools/mkgmap-r$mkgmaprev och $tools/splitter-r$splitterrev."
+    echo "Nu kan du skapa dina egna kartor, men ändra i $scriptname först till det land du vill göra en karta. Kör sedan ./$scriptname -h för att se hur du använder det."
     if [ $? -gt 0 ]
     then
        echo *** Installationen misslyckades
@@ -113,37 +113,37 @@ case $@ in
     fi
     ;;
   -d|download)
-	echo "Laddar ner $countryfile ...."
-	cd $countrydir
-	# Tar bort fil om den redan existerar
-	[ -f $countryfile ] && rm $countryfile
-	wget --no-cache http://download.geofabrik.de/$world/$countryfile
-	if [ $? -gt 0 ]
+    echo "Laddar ner $countryfile ...."
+    cd $countrydir
+    # Tar bort fil om den redan existerar
+    [ -f $countryfile ] && rm $countryfile
+    wget --no-cache http://download.geofabrik.de/$world/$countryfile
+    if [ $? -gt 0 ]
     then
        echo *** Nedladdning misslyckades
        exit 1
-	fi
-	;;
+    fi
+    ;;
   -s|split)
-	echo "Splittrar $countryfile ...."
-	cd $countrydir
-	exec $EXEC1
-	if [ $? -gt 0 ]
-	then
-	   echo *** Splittring misslyckades
-	   exit 1
-	fi
-	;;
+    echo "Splittrar $countryfile ...."
+    cd $countrydir
+    exec $EXEC1
+    if [ $? -gt 0 ]
+    then
+       echo *** Splittring misslyckades
+       exit 1
+    fi
+    ;;
   -a|args)
-	echo "Genererar ny args fil."
-	cd $countrydir
-	../argsfil$country
-	if [ $? -gt 0 ]
-	then
-	   echo *** Generering av nyfil.args misslyckades
-	   exit 1
-	fi
-	;;
+    echo "Genererar ny args fil."
+    cd $countrydir
+    ../argsfil$country
+    if [ $? -gt 0 ]
+    then
+       echo *** Generering av nyfil.args misslyckades
+       exit 1
+    fi
+    ;;
   -k|kust)
     echo "Laddar ner kustlinje ...."
     cd $coastline
@@ -155,20 +155,20 @@ case $@ in
     fi
     ;;
   -b|build)
-	echo "Genererar Garmin karta ...."
-	cd $countrydir
-	exec $EXEC2
-	if [ $? -gt 0 ]
-	then
-	   echo *** Kartgenerering misslyckades
-	   exit 1
-	fi
-	echo "Färdig!"
-	;;
+    echo "Genererar Garmin karta ...."
+    cd $countrydir
+    exec $EXEC2
+    if [ $? -gt 0 ]
+    then
+       echo *** Kartgenerering misslyckades
+       exit 1
+    fi
+    echo "Färdig!"
+    ;;
   -me|merge)
-	echo "Slår samman kartor ...."
-	cd $contourdir
-	exec $EXEC3
+    echo "Slår samman kartor ...."
+    cd $contourdir
+    exec $EXEC3
     if [ $? -gt 0 ]
     then
        echo *** Sammanslagning av kartor misslyckades
@@ -176,18 +176,18 @@ case $@ in
     fi
     ;;
   -c|clean)
-	echo "Rensar bort filer ...."
-	rm $countrydir/*.*
-	rm $contourdir/*.*
-	;;
+    echo "Rensar bort filer ...."
+    rm $countrydir/*.*
+    rm $contourdir/*.*
+    ;;
   -m|move)
-	echo "Flyttar kartfil ...."
-	cd $countrydir
-	mv gmapsupp.img $movdir/$countryname-$DATE.img
-	;;
+    echo "Flyttar kartfil ...."
+    cd $countrydir
+    mv gmapsupp.img $movdir/$countryname-$DATE.img
+    ;;
   -m2|move2)
     echo "Flyttar kartfil ...."
-	cd $contourdir2
+    cd $contourdir2
     mv gmapsupp.img $movdir/$countryname-topo-$DATE.img
     ;;
   -pbf|pbf-files)
@@ -209,20 +209,20 @@ case $@ in
        echo *** Generering misslyckades
        exit 1
     fi
-    ;;	
+    ;;
   *)
     echo "Dessa kan du använda:"
-	echo "-i eller install (Behöver bara köras första gången.)"
-	echo "-d eller download (Laddar ner OSM data för $countryname.)"
-	echo "-s eller split (Splittar och förbereder filer.)"
-	echo "-a eller args (Skapar lista över alla filer som ska slås ihop.)"
-	echo "-b eller build (Genererar standardkarta.)"
+    echo "-i eller install (Behöver bara köras första gången.)"
+    echo "-d eller download (Laddar ner OSM data för $countryname.)"
+    echo "-s eller split (Splittar och förbereder filer.)"
+    echo "-a eller args (Skapar lista över alla filer som ska slås ihop.)"
+    echo "-b eller build (Genererar standardkarta.)"
     echo "-pbf eller pbf-files (Genererar pbf-filer för topografiska linjer.)"
-    echo "-img eller image-files (Genererar image filer för topografisk karta.)"	
-	echo "-me eller merge (Slår ihop standardkartan med topografiska linjer.)"
-	echo "-m eller move (Flyttar standardkarta till $movdir/.)"
-	echo "-m2 eller move2 (Flyttar karta med topografiska linjer till $movdir/.)"
-	echo "-c eller clean (Rensar bort alla filer för $countryname efter att inte gamla filer ska ligga kvar nästa gång du vill skapa en ny karta.)"
+    echo "-img eller image-files (Genererar image filer för topografisk karta.)"
+    echo "-me eller merge (Slår ihop standardkartan med topografiska linjer.)"
+    echo "-m eller move (Flyttar standardkarta till $movdir/.)"
+    echo "-m2 eller move2 (Flyttar karta med topografiska linjer till $movdir/.)"
+    echo "-c eller clean (Rensar bort alla filer för $countryname efter att inte gamla filer ska ligga kvar nästa gång du vill skapa en ny karta.)"
     exit 1
     ;;
 esac
