@@ -104,6 +104,9 @@ case $@ in
     cd $tools
     wget -qO- -O mkgmap.zip http://www.mkgmap.org.uk/download/mkgmap-r$mkgmaprev.zip && unzip mkgmap.zip && rm mkgmap.zip
     wget -qO- -O splitter.zip http://www.mkgmap.org.uk/download/splitter-r$splitterrev.zip && unzip splitter.zip && rm splitter.zip
+	cd $tools
+	wget --no-cache https://raw.githubusercontent.com/Malmis/mapgen/master/args
+	chmod +x args
     echo "Scriptfilen mapgen-$country finns nu i $workdir och verktygen mkgmap och splitter finns nu i $tools/mkgmap-r$mkgmaprev och $tools/splitter-r$splitterrev."
     echo "Nu kan du skapa dina egna kartor, Gå till $workdir och kör sedan ./mapgen-$country -h för att se hur du använder det."
     if [ $? -gt 0 ]
@@ -137,7 +140,7 @@ case $@ in
   -a|args)
     echo "Genererar ny args fil."
     cd $countrydir
-    ../args
+    ../../tools/args
     if [ $? -gt 0 ]
     then
        echo *** Generering av new.args misslyckades
