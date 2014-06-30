@@ -71,7 +71,7 @@ map_mkgmap0="--input-file=$inputfile --style-file=$stylefile --check-styles --ma
 map_mkgmap1="--copyright-message=$copyright --generate-sea=extend-sea-sectors,floodblocker,land-tag=natural=background"
 map_mkgmap2="--drive-on-right --check-roundabouts --road-name-pois --ignore-osm-bounds --make-poi-index --adjust-turn-headings --ignore-maxspeeds --ignore-turn-restrictions --coastlinefile=$coastline/$coastfile"
 map_mkgmap3="--product-id=$productid --family-id=$familyid --mapname=$mapname --country-name=$countryname --family-name=$familyname --country-abbr=$countryabbr --area-name=$areaname --nsis --tdbfile"
-map_mkgmap4="--remove-ovm-work-files --location-autofill=bounds,nearest,is_in --name-tag-list=name:fi,name:sv,name:no,name:dk,name:en,name --description=$description --show-profiles=1 --gmapsupp -c nyfil.args"
+map_mkgmap4="--remove-ovm-work-files --location-autofill=bounds,nearest,is_in --name-tag-list=name:fi,name:sv,name:no,name:dk,name:en,name --description=$description --show-profiles=1 --gmapsupp -c new.args"
 #map_mkgmap_contour="--family-id=$familyid --product-id=$productid --family-name=contours --draw-priority=30 --remove-ovm-work-files --transparent --gmapsupp ../$contrydir/*.osm.pbf"
 map_merge="--show-profiles=1 --gmapsupp $countrydir/gmapsupp.img $contourdir2/gmapsupp.img"
 
@@ -99,7 +99,7 @@ case $@ in
     mkdir -p $workdir/$country
     mkdir -p $contourdir
     mkdir -p $contourdir2
-    mkdir -p $movdir/garmin
+    mkdir -p $movdir
     mv $scriptname $workdir/
     cd $tools
     wget -qO- -O mkgmap.zip http://www.mkgmap.org.uk/download/mkgmap-r$mkgmaprev.zip && unzip mkgmap.zip && rm mkgmap.zip
@@ -137,10 +137,10 @@ case $@ in
   -a|args)
     echo "Genererar ny args fil."
     cd $countrydir
-    ../argsfil$country
+    ../args
     if [ $? -gt 0 ]
     then
-       echo *** Generering av nyfil.args misslyckades
+       echo *** Generering av new.args misslyckades
        exit 1
     fi
     ;;
