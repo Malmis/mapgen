@@ -101,7 +101,7 @@ case $@ in
     mkdir -p $workdir/$country
     mkdir -p $contourdir
     mkdir -p $contourdir2
-	mkdir -p $polygons
+    mkdir -p $polygons
     mkdir -p $movdir
     cp $scriptname $workdir/mapgen-$country
     cd $tools
@@ -219,7 +219,7 @@ case $@ in
   -p|polygon)
     echo "Laddar ner polygon för $countryname ..."
     cd $polygons
-	wget --no-cache http://download.geofabrik.de/$world/$country.poly
+    wget --no-cache http://download.geofabrik.de/$world/$country.poly
     ;;
   *)
     echo "Dessa kan du använda:"
