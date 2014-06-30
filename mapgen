@@ -1,5 +1,5 @@
 #!/bin/bash
-# -- INFORMATION --------------------------------------------- #
+# -- INFORMATION -------------------------------------------- #
 #
 # Script created by Kristoffer Malmström (Malmis)
 #
@@ -8,7 +8,7 @@
 #
 # They will be installed with ./mapgen install or ./mapgen -i
 #
-# ------------------------------------------------------------ #
+# ----------------------------------------------------------- #
 
 # -- for installation -- #
 workdir=~/workdir # Where everything happens
