@@ -15,6 +15,7 @@ workdir=~/workdir # Where everything happens
 styles=~/styles # Where you put your style files
 coastline=~/coastline # Where coastlines are downloaded
 tools=~/tools # Where mkgmap and splitter installs
+polygons=~/polygons # Where polygons are stored.
 movdir=~/public_html/garmin # Could be changed to wherever you want to move your maps.
 tmp=~/tmp # Temporary directory for Java.
 javamem=2G # How much memory Java will use, could be changed to whatever you want to use, maximum your computers amount of memory.
@@ -100,6 +101,7 @@ case $@ in
     mkdir -p $workdir/$country
     mkdir -p $contourdir
     mkdir -p $contourdir2
+	mkdir -p $polygons
     mkdir -p $movdir
     cp $scriptname $workdir/mapgen-$country
     cd $tools
@@ -214,6 +216,11 @@ case $@ in
        exit 1
     fi
     ;;
+  -p|polygon)
+    echo "Laddar ner polygon för $countryname ...."
+    cd $polygons
+	wget --no-cache http://download.geofabrik.de/$world/$country.poly
+    ;;
   *)
     echo "Dessa kan du använda:"
     echo "-i eller install (Behöver bara köras första gången.)"
@@ -222,6 +229,7 @@ case $@ in
     echo "-a eller args (Skapar lista över alla filer som ska slås ihop.)"
     echo "-k eller kust (Laddar ner kustlinjer.)"
     echo "-b eller build (Genererar standardkarta.)"
+	echo "-p eller polygon (Laddar ner polygon för $countryname.)"
     echo "-pbf eller pbf-files (Genererar pbf-filer för topografiska linjer.)"
     echo "-img eller image-files (Genererar image filer för topografisk karta.)"
     echo "-me eller merge (Slår ihop standardkartan med topografiska linjer.)"
