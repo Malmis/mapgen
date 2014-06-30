@@ -28,21 +28,35 @@ The output of ./mapgen will be:
     $ ./mapgen
     Dessa kan du använda:
     -i eller install (Behöver bara köras första gången.)
-    -d eller download (Laddar ner OSM data för Sweden.)
+    -d eller download (Laddar ner OSM data för Denmark.)
     -s eller split (Splittar och förbereder filer.)
     -a eller args (Skapar lista över alla filer som ska slås ihop.)
+    -k eller kust (Laddar ner kustlinjer.)
     -b eller build (Genererar standardkarta.)
+    -pbf eller pbf-files (Genererar pbf-filer för topografiska linjer.)
+    -img eller image-files (Genererar image filer för topografisk karta.)
     -me eller merge (Slår ihop standardkartan med topografiska linjer.)
     -m eller move (Flyttar standardkarta till /home/osmtest/public_html/garmin/.)
     -m2 eller move2 (Flyttar karta med topografiska linjer till /home/osmtest/public_html/garmin/.)
-    -c eller clean (Rensar bort alla filer för Sweden efter att inte gamla filer ska ligga kvar nästa gång du vill skapa en ny karta.)
+    -c eller clean (Rensar bort alla filer för Denmark efter att inte gamla filer ska ligga kvar nästa gång du vill skapa en ny karta.)
 
 
 
-### Not complete ###
+### Functions ###
 The script is not completely done yet, so there are some missing functions in it right now.
 
-The topographic part needs another script that is right now a separately script, but it will soon be implemented.
+But right now i have implemented this stuff:
+* Complete one command installation (creates necessary directories and downloads styles and tools).
+* Download of country *.osm.pbf files from geofabrik.
+* Automated splitting of country file.
+* Creation of new args file.
+* Downloads coastlines with one command.
+* Builds maps ready to use in Garmin GPS units.
+* Downloads srtm3 (topographic) data and creates pbf files of them.
+* Builds garmin image files of the topographic data.
+* Merging of standard map and topographic map.
+* Move function to move the ready garmin image files to wherever you want them to be.
+* Cleaning function to remove unecessary files after you have built your map completely.
 
 
 ### Help & Contact ###
