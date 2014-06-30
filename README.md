@@ -31,6 +31,7 @@ The output of ./mapgen will be:
     -d eller download (Laddar ner OSM data för Denmark.)
     -s eller split (Splittar och förbereder filer.)
     -a eller args (Skapar lista över alla filer som ska slås ihop.)
+    -k eller kust (Laddar ner kustlinjer.)
     -b eller build (Genererar standardkarta.)
     -pbf eller pbf-files (Genererar pbf-filer för topografiska linjer.)
     -img eller image-files (Genererar image filer för topografisk karta.)
