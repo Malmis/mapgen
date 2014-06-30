@@ -220,7 +220,7 @@ case $@ in
     echo "-d eller download (Laddar ner OSM data för $countryname.)"
     echo "-s eller split (Splittar och förbereder filer.)"
     echo "-a eller args (Skapar lista över alla filer som ska slås ihop.)"
-	echo "-k eller kust (Laddar ner kustlinjer.)"
+    echo "-k eller kust (Laddar ner kustlinjer.)"
     echo "-b eller build (Genererar standardkarta.)"
     echo "-pbf eller pbf-files (Genererar pbf-filer för topografiska linjer.)"
     echo "-img eller image-files (Genererar image filer för topografisk karta.)"
