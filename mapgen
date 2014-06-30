@@ -1,5 +1,5 @@
 #!/bin/bash
-# -- INFORMATION --------------------------------------------- #
+# -- INFORMATION --------------------------------------------  #
 #
 # Script created by Kristoffer Malmström (Malmis)
 #
@@ -227,7 +227,7 @@ case $@ in
     echo "-d eller download (Laddar ner OSM data för $countryname.)"
     echo "-s eller split (Splittar och förbereder filer.)"
     echo "-a eller args (Skapar lista över alla filer som ska slås ihop.)"
-    echo "-k eller kust (Laddar ner kustlinjer.)"
+    echo "-k eller kust (Laddar ner kustlinjer för din karta. Behöver bara köras en gång.)"
     echo "-b eller build (Genererar standardkarta.)"
 	echo "-p eller polygon (Laddar ner polygon för $countryname.)"
     echo "-pbf eller pbf-files (Genererar pbf-filer för topografiska linjer.)"
