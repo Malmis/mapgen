@@ -53,7 +53,7 @@ But right now i have implemented this stuff:
 * Download polygon file.
 * Merging of standard map and topographic map.
 * Move function to move the ready garmin image files to wherever you want them to be.
-* Cleaning function to remove unecessary files after you have built your map completely.
+* Cleaning function to remove unnecessary files after you have built your map completely.
 
 
 ### Help & Contact ###
