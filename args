@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-print "Skapar ny .args-fil för Sverige ...\n";
+print "Skapar ny .args-fil ...\n";
 
 open(FIL, "template.args") or die"*** Kan inte öppna fil \"template.args\".\n";
 open(NYFIL, ">new.args") or die "Kan inte skapa fil \"new.args\".\n";
