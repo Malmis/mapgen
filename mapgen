@@ -74,7 +74,7 @@ map_mkgmap4="--remove-ovm-work-files --location-autofill=bounds,nearest,is_in --
 map_merge="--show-profiles=1 --gmapsupp $countrydir/gmapsupp.img $topodir/srtm/gmapsupp.img"
 
 topo_mkgmap="--max-jobs=2 --gmapsupp --mapname=$topoid --description=$countryname-Topographic"
-topo2_mkgmap="--area-name=$countryname --read-config=~/styles/topo/options --style-file=~/styles/topo ~/styles/topo.txt $topodir/srtm/*.osm.pbf"
+topo2_mkgmap="--area-name=$countryname --read-config=$styles/topo/options --style-file=$styles/topo $styles/topo.txt $topodir/srtm/*.osm.pbf"
 topo_exec=phyghtmap
 topo_pbf="--step=20 --line-cat=400,100 --source=view3 --polygon=$polygons/$country.poly --pbf --output-prefix=contour"
 
