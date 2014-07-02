@@ -36,7 +36,7 @@ coast=europe # could be planet or europe (Important to use planet if you create 
 stylefile1=malmis.zip
 stylefile2=malmis.txt
 creator=Malmis # Your nickname
-series="$countryname OSM map"
+series=$countryname-OSM-map
 
 # -- do not change -- #
 if [ -z "$javacmd" ] ; then
