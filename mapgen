@@ -19,7 +19,7 @@ polygons=~/polygons # Where polygons are stored.
 movdir=~/public_html/garmin # Could be changed to wherever you want to move your maps.
 tmp=~/tmp # Temporary directory for Java.
 javamem=2G # How much memory Java will use, could be changed to whatever you want to use, maximum your computers amount of memory.
-mkgmaprev=3311 # Could be changed to latest mkgmap revision.
+mkgmaprev=3335 # Could be changed to latest mkgmap revision.
 splitterrev=412 # Could be changed to latest splitter revision.
 # ---------------------- #
 
@@ -33,18 +33,19 @@ mapid=33110000 # Map ID - change for every map, otherwise it will conflict with 
 topoid=22110000 # Map ID for Topo
 world=europe # could be europe, south-america, north-america, central-america, asia, australia-oceania, antarctica, africa (this is not the same as the coast variable)
 coast=europe # could be planet or europe (Important to use planet if you create maps outside europe, but planet could also be used for countries in europe. The europe file is about 150mb smaller.)
-stylefile1=malmis.zip
+stylefile1=sweden
 stylefile2=malmis.txt
 creator=Malmis # Your nickname
 series=$countryname-OSM-map
+user=osm # user account that is runnig this script
 
 # -- do not change -- #
 if [ -z "$javacmd" ] ; then
   javacmd=java
 fi
 javacmd_options="-Xmx$javamem -Djava.io.tmpdir=$tmp"
-mkgmap_op="-ea -jar /home/osm/tools/mkgmap-r3308/mkgmap.jar"
-splitter_op="-jar /home/osm/tools/splitter/splitter.jar"
+mkgmap_op="-ea -jar /home/$user/tools/mkgmap-r$mkgmaprev/mkgmap.jar"
+splitter_op="-jar /home/$user/tools/splitter-r$splitterrev/splitter.jar"
 DATE=$(date +'%Y-%m-%d')
 scriptname=mapgen
 countryfile=$country-latest.osm.pbf
@@ -53,40 +54,31 @@ topodir=$workdir/topo/$country
 coastfile=coastlines_$coast-latest.osm.pbf
 stylefile=$styles/$stylefile1
 inputfile=$styles/$stylefile2
-productid=$prodid
-familyid=$famid
-mapname=$mapid
 maxnodes=1500000
 maxareas=2048
-statusfreq=600
-countryname=$countryname
-familyname=OSM-$countryname-$DATE
+familyname=$countryname-OSM-$DATE
 countryabbr=$countryabr
 areaname=$countryname
 copyright="http://www.openstreetmap.org/copyright"
-description="$DATE-$creator-OpenStreetMap"
+description="$countryname-OSM-$DATE-$creator"
 
-map_split="--mapid=$mapid --output=pbf --max-nodes=$maxnodes --keep-complete=true --max-areas=$maxareas --status-freq=$statusfreq --no-trim"
-map_mkgmap0="--input-file=$inputfile --style-file=$stylefile --check-styles --max-jobs --draw-priority=20 --route --latin1"
-map_mkgmap1="--copyright-message=$copyright --generate-sea=extend-sea-sectors,floodblocker,land-tag=natural=background --process-destination --process-exits"
-# --ignore-maxspeeds --ignore-turn-restrictions --ignore-osm-bounds --nsis --tdbfile # Extras
-map_mkgmap2="--drive-on-right --check-roundabouts --road-name-pois --make-poi-index --adjust-turn-headings --preserve-element-order --make-opposite-cycleways --coastlinefile=$coastline/$coastfile"
-map_mkgmap3="--product-id=$productid --family-id=$familyid --mapname=$mapname --country-name=$countryname --family-name=$familyname --country-abbr=$countryabbr --area-name=$areaname --series-name=$series"
-map_mkgmap4="--remove-ovm-work-files --location-autofill=bounds,nearest,is_in --name-tag-list=name:fi,name:sv,name:no,name:dk,name:en,name --description=$description --tdbfile --show-profiles=1 --gmapsupp -c new.args"
-map_merge="--tdbfile --show-profiles=1 --gmapsupp $countrydir/gmapsupp.img $topodir/srtm/gmapsupp.img"
+map_split="--max-areas=$maxareas --no-trim --keep-complete=true --max-nodes=$maxnodes --mapid=$mapid --description=$description --output=pbf"
+map_mkgmap1="--read-config=$styles/sweden/options --style-file=$stylefile --input-file=$inputfile --check-styles --generate-sea=extend-sea-sectors,floodblocker,land-tag=natural=background --coastlinefile=$coastline/$coastfile"
+# --ignore-maxspeeds --ignore-turn-restrictions --ignore-osm-bounds --nsis --tdbfile --copyright-message=$copyright # Extras
+map_mkgmap2="--name-tag-list=name:fi,name:sv,name:no,name:dk,name:en,name -c template.args"
+map_merge="--description=$countryname-Topo-OSM-$DATE-$creator --family-id=455 --show-profiles=1 --tdbfile --gmapsupp $topodir/srtm/gmapsupp.img $countrydir/gmapsupp.img"
 
-topo_mkgmap="--max-jobs=2 --gmapsupp --mapname=$topoid --description=$countryname-Topographic"
-topo2_mkgmap="--area-name=$countryname --read-config=$styles/topo/options --style-file=$styles/topo $styles/topo.txt $topodir/srtm/*.osm.pbf"
+topo_mkgmap="--read-config=$styles/topo/options --style-file=$styles/topo --input-file=$styles/topo.txt --mapname=$topoid --description=$countryname-Topographic --area-name=$countryname $topodir/srtm/*.osm.pbf"
 topo_exec=phyghtmap
 topo_pbf="--step=20 --line-cat=400,100 --source=view3 --polygon=$polygons/$country.poly --pbf --output-prefix=contour"
 
-mkgmap_exec="$javacmd $javacmd_options $mkgmap_op $map_mkgmap0 $map_mkgmap1 $map_mkgmap2 $map_mkgmap3 $map_mkgmap4"
+mkgmap_exec="$javacmd $javacmd_options $mkgmap_op $map_mkgmap1 $map_mkgmap2"
 mkgmap_merge="$javacmd $javacmd_options $mkgmap_op $map_merge"
 
 EXEC1="$javacmd $javacmd_options $splitter_op $map_split $countryfile"
 EXEC2="$mkgmap_exec"
 EXEC3="$mkgmap_merge"
-EXEC4="$javacmd $javacmd_options $mkgmap_op $topo_mkgmap $topo2_mkgmap"
+EXEC4="$javacmd $javacmd_options $mkgmap_op $topo_mkgmap"
 
 case $@ in
 
@@ -140,16 +132,6 @@ case $@ in
        exit 1
     fi
     ;;
-  -a|args)
-    echo "Genererar ny args fil ..."
-    cd $countrydir
-    ../../tools/args$country
-    if [ $? -gt 0 ]
-    then
-       echo *** Generering av new.args misslyckades
-       exit 1
-    fi
-    ;;
   -k|kust)
     echo "Laddar ner kustlinje ..."
     cd $coastline
@@ -196,6 +178,16 @@ case $@ in
     cd $topodir
     mv gmapsupp.img $movdir/$countryname-topo-$DATE.img
     ;;
+  -cp|copy)
+    echo "Kopierar kartfil ..."
+    cd $countrydir
+    cp gmapsupp.img $movdir/$countryname-$DATE.img
+    ;;
+  -cp2|copy2)
+    echo "Kopierar kartfil ..."
+    cd $topodir
+    cp gmapsupp.img $movdir/$countryname-topo-$DATE.img
+    ;;
   -pbf|pbf-files)
     echo "Genererar topografiska pbf filer ..."
     cd $topodir/srtm
@@ -226,16 +218,17 @@ case $@ in
     echo "-i eller install (Behöver bara köras första gången.)"
     echo "-d eller download (Laddar ner OSM data för $countryname.)"
     echo "-s eller split (Splittar och förbereder filer.)"
-    echo "-a eller args (Skapar lista över alla filer som ska slås ihop.)"
     echo "-k eller kust (Laddar ner kustlinjer för din karta. Behöver bara köras en gång.)"
     echo "-b eller build (Genererar standardkarta.)"
     echo "-p eller polygon (Laddar ner polygon för $countryname. Behöver bara köras en gång per land.)"
     echo "-pbf eller pbf-files (Genererar pbf-filer för topografiska linjer.)"
     echo "-img eller image-files (Genererar image filer för topografisk karta.)"
     echo "-me eller merge (Slår ihop standardkartan med topografiska linjer.)"
+    echo "-cp eller copy (Kopierar standardkarta till $movdir/.)"
+    echo "-cp2 eller copy2 (Kopierar karta med topografiska linjer till $movdir/.)"
     echo "-m eller move (Flyttar standardkarta till $movdir/.)"
     echo "-m2 eller move2 (Flyttar karta med topografiska linjer till $movdir/.)"
-    echo "-c eller clean (Rensar bort alla filer för $countryname efter att inte gamla filer ska ligga kvar nästa gång du vill skapa en ny karta.)"
+    echo "-c eller clean (Rensar bort alla filer för $countryname så att inte gamla filer ska ligga kvar nästa gång du vill skapa en ny karta.)"
     exit 1
     ;;
 esac
