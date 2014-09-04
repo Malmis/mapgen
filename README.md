@@ -23,19 +23,19 @@ The output of ./mapgen will be:
     $ ./mapgen
     Dessa kan du använda:
     -i eller install (Behöver bara köras första gången.)
-    -d eller download (Laddar ner OSM data för Denmark.)
+    -d eller download (Laddar ner OSM data för Sweden.)
     -s eller split (Splittar och förbereder filer.)
-    -a eller args (Skapar lista över alla filer som ska slås ihop.)
     -k eller kust (Laddar ner kustlinjer för din karta. Behöver bara köras en gång.)
     -b eller build (Genererar standardkarta.)
-    -p eller polygon (Laddar ner polygon för $countryname. Behöver bara köras en gång per land.)
+    -p eller polygon (Laddar ner polygon för Sweden. Behöver bara köras en gång per land.)
     -pbf eller pbf-files (Genererar pbf-filer för topografiska linjer.)
     -img eller image-files (Genererar image filer för topografisk karta.)
     -me eller merge (Slår ihop standardkartan med topografiska linjer.)
-    -m eller move (Flyttar standardkarta till /home/osmtest/public_html/garmin/.)
-    -m2 eller move2 (Flyttar karta med topografiska linjer till /home/osmtest/public_html/garmin/.)
-    -c eller clean (Rensar bort alla filer för Denmark efter att inte gamla filer ska ligga kvar nästa gång du vill skapa en ny karta.)
-
+    -cp eller copy (Kopierar standardkarta till /home/osm/public_html/garmin/.)
+    -cp2 eller copy2 (Kopierar karta med topografiska linjer till /home/osm/public_html/garmin/.)
+    -m eller move (Flyttar standardkarta till /home/osm/public_html/garmin/.)
+    -m2 eller move2 (Flyttar karta med topografiska linjer till /home/osm/public_html/garmin/.)
+    -c eller clean (Rensar bort alla filer för Sweden så att inte gamla filer ska ligga kvar nästa gång du vill skapa en ny karta.)
 
 
 ### Functions ###
