@@ -1,0 +1,18 @@
+#
+# This file contains information about the style.
+# It is completely optional.
+# 
+
+
+# A short one line description of the style
+#
+summary: Style for Malmis Garmin maps.
+
+# Version of the style itself
+#
+version=1.0
+
+description {
+This is Malmis default style for Garmin maps. 
+It is a modification of the default mkgmap style and Lambertus world map style.
+}

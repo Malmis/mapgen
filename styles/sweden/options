@@ -1,0 +1,37 @@
+
+#
+# Style options.
+#
+
+latin1
+draw-priority:20
+route
+process-destination
+process-exits
+drive-on-right
+check-roundabouts
+road-name-pois
+make-poi-index
+adjust-turn-headings
+preserve-element-order
+make-opposite-cycleways
+remove-ovm-work-files
+location-autofill = bounds, nearest, is_in
+levels = 0:24, 1:22, 2:20, 3:18
+overview-levels = 4:17, 5:16, 6:15, 7:14, 8:12
+max-jobs: 2
+product-id: 1
+family-id: 355
+mapname: 33110000
+country-name: SWEDEN
+country-abbr: SWE
+#description: Sweden OSM map by Malmis
+series-name: Sweden OSM map
+area-name: Sweden
+family-name: Sweden OSM
+gmapsupp
+
+## For MapSource
+show-profiles = 1
+tdbfile
+

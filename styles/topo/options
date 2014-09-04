@@ -1,6 +1,12 @@
-draw-priority=30
+draw-priority: 30
 transparent
 merge-lines
-levels = 0:24, 1:23, 2:22, 3:20, 4:18
-family-name=Topographic
-series-name=Topographic
+levels: 0:24, 1:23, 2:22, 3:20, 4:18
+family-name: Topographic
+series-name: Topographic
+code-page: 1252
+latin1
+max-jobs: 2
+tdbfile
+show-profiles: 1
+gmapsupp

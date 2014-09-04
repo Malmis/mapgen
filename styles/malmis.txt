@@ -1,11 +1,11 @@
 ; malmis.TYP
 ; Longueur:  20 588 Bytes
-; Fichier TYP compilÈ     07-11-2013     17:31:40
-; DÈcompilÈ le 2013-07-11 ‡ 17:32:05
+; Fichier TYP compil√©     07-11-2013     17:31:40
+; D√©compil√© le 2013-07-11 √† 17:32:05
 
 [_id]
 ProductCode=1
-FID=900
+FID=355
 CodePage=1252
 [End]
 
@@ -86,10 +86,10 @@ Type=0x051,5
 [_polygon]
 Type=0x02
 String1=0x04,Residential
-String2=0x01,RÈsidentiel
+String2=0x01,R√©sidentiel
 String3=0x03,Bebouwde kom
 String4=0x00,Residential
-String5=0x07,BostadsomrÂde
+String5=0x07,Bostadsomr√•de
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
@@ -137,10 +137,10 @@ Xpm="32 32 4 1"
 [_polygon]
 Type=0x03
 String1=0x04,Residential
-String2=0x01,RÈsidentiel
+String2=0x01,R√©sidentiel
 String3=0x03,Bebouwde kom
 String4=0x00,Residential
-String5=0x07,BostadsomrÂde
+String5=0x07,Bostadsomr√•de
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
@@ -191,7 +191,7 @@ String1=0x04,Military
 String2=0x01,Militaire
 String3=0x03,Militair
 String4=0x00,Military
-String5=0x07,Milit‰r
+String5=0x07,Milit√§r
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
@@ -381,7 +381,7 @@ Xpm="32 32 2 1"
 [_polygon]
 Type=0x0a
 String1=0x04,School
-String2=0x01,…cole
+String2=0x01,√âcole
 String3=0x00,School
 String4=0x07,Skola
 ExtendedLabels=Y
@@ -396,7 +396,7 @@ Xpm="0 0 2 0"
 [_polygon]
 Type=0x0b
 String1=0x04,Hospital
-String2=0x01,HÙpital
+String2=0x01,H√¥pital
 String3=0x03,Hospitaal
 String4=0x00,Hospital
 String5=0x07,Sjukhus
@@ -579,7 +579,7 @@ Type=0x10
 String1=0x04,Residential
 String2=0x03,bebouwing
 String3=0x00,Residential
-String4=0x07,BostadsomrÂde
+String4=0x07,Bostadsomr√•de
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
@@ -641,7 +641,7 @@ Xpm="0 0 1 0"
 [_polygon]
 Type=0x12
 String1=0x04,Quarry
-String2=0x01,CarriËre
+String2=0x01,Carri√®re
 String3=0x03,Groeve
 String4=0x00,Quarry
 String5=0x07,Stenbrott
@@ -690,7 +690,7 @@ Xpm="32 32 2 1"
 [_polygon]
 Type=0x13
 String1=0x04,Building
-String2=0x01,B‚timent
+String2=0x01,B√¢timent
 String3=0x03,Gebouw
 String4=0x00,Building
 String5=0x07,Byggnad
@@ -708,7 +708,7 @@ Type=0x14
 String1=0x04,tourism, recreation
 String2=0x03,toerisme, recreatie
 String3=0x00,tourism, recreation
-String4=0x07,RekreationsomrÂde
+String4=0x07,Rekreationsomr√•de
 ExtendedLabels=N
 Xpm="32 32 4 1"
 "! c #BDCA00"
@@ -754,7 +754,7 @@ Xpm="32 32 4 1"
 [_polygon]
 Type=0x15
 String1=0x04,Forest
-String2=0x01,ForÍt
+String2=0x01,For√™t
 String3=0x03,Bos
 String4=0x00,Forest
 String5=0x07,Skog
@@ -803,7 +803,7 @@ Xpm="32 32 2 1"
 [_polygon]
 Type=0x16
 String1=0x04,Nature reserve
-String2=0x01,RÈserve naturelle
+String2=0x01,R√©serve naturelle
 String3=0x03,Natuurreservaat
 String4=0x00,Nature reserve
 String5=0x07,Naturreservat
@@ -855,7 +855,7 @@ String1=0x04,Meadow
 String2=0x01,Prairie
 String3=0x03,Weide
 String4=0x00,Meadow
-String5=0x07,ƒng
+String5=0x07,√Ñng
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
@@ -969,10 +969,10 @@ Xpm="32 32 4 1"
 [_polygon]
 Type=0x1a
 String1=0x04,Graveyard
-String2=0x01,CimetiËre
+String2=0x01,Cimeti√®re
 String3=0x03,Begraafplaats
 String4=0x00,Graveyard
-String5=0x07,KyrkogÂrd
+String5=0x07,Kyrkog√•rd
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
@@ -1021,7 +1021,7 @@ String1=0x04,Vineyard
 String2=0x01,Vignoble
 String3=0x03,Wijngaard
 String4=0x00,Vineyard
-String5=0x07,VingÂrd
+String5=0x07,Ving√•rd
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
@@ -1085,7 +1085,7 @@ String1=0x04,Field
 String2=0x01,Champs
 String3=0x03,Veld
 String4=0x00,Field
-String5=0x07,F‰lt
+String5=0x07,F√§lt
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
@@ -1149,7 +1149,7 @@ String1=0x04,Danger area
 String2=0x01,Zone dangereuse
 String3=0x03,Risicogebied
 String4=0x00,Danger area
-String5=0x07,Farligt omrÂde
+String5=0x07,Farligt omr√•de
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
@@ -1274,7 +1274,7 @@ Xpm="0 0 1 0"
 [_polygon]
 Type=0x25
 String1=0x04,Power station
-String2=0x01,Station Èlectrique
+String2=0x01,Station √©lectrique
 String3=0x03,Energiecentrale
 String4=0x00,Power station
 String5=0x07,Elstation
@@ -1350,7 +1350,7 @@ Xpm="0 0 1 0"
 [_polygon]
 Type=0x2a
 String1=0x04,Landfill
-String2=0x01,DÈcharge
+String2=0x01,D√©charge
 String3=0x03,Stortplaats
 String4=0x00,Landfill
 String5=0x07,Avfallsdeponi
@@ -1464,7 +1464,7 @@ Xpm="0 0 1 0"
 [_polygon]
 Type=0x2d
 String1=0x04,Aerodrome
-String2=0x01,AÈrodrome
+String2=0x01,A√©rodrome
 String3=0x03,Vliegveld
 String4=0x00,Aerodrome
 String5=0x07,Flygplats
@@ -1578,7 +1578,7 @@ Type=0x30
 String1=0x04,Living street
 String2=0x01,Zone mixte
 String3=0x00,Living street
-String4=0x07,GÂrdsgata
+String4=0x07,G√•rdsgata
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
@@ -1669,7 +1669,7 @@ Xpm="0 0 1 0"
 [_polygon]
 Type=0x35
 String1=0x04,Supermarket
-String2=0x01,SupermarchÈ
+String2=0x01,Supermarch√©
 String3=0x03,Supermarkt
 String4=0x00,Supermarket
 String5=0x07,Supermarket
@@ -1687,7 +1687,7 @@ String1=0x04,Place of worship
 String2=0x01,Lieu de Culte
 String3=0x03,Religieus gebouw
 String4=0x00,Place of worship
-String5=0x07,Bˆneplats
+String5=0x07,B√∂neplats
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
@@ -1701,7 +1701,7 @@ Type=0x37
 String1=0x01,Piste
 String2=0x04,Track
 String3=0x00,Track
-String4=0x07,SpÂr
+String4=0x07,Sp√•r
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
@@ -1839,9 +1839,9 @@ Xpm="32 32 4 1"
 [_polygon]
 Type=0x46
 String1=0x04,Riverbank
-String2=0x01,Lit de RiviËre
+String2=0x01,Lit de Rivi√®re
 String3=0x03,Rivier
-String4=0x07,ƒlv
+String4=0x07,√Ñlv
 String5=0x00,River
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
@@ -1941,7 +1941,7 @@ Xpm="32 32 4 1"
 [_polygon]
 Type=0x4d
 String1=0x00,Glacier
-String2=0x07,Glaci‰r
+String2=0x07,Glaci√§r
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
@@ -2138,10 +2138,10 @@ Xpm="32 32 4 1"
 [_polygon]
 Type=0x51
 String1=0x04,Marsh
-String2=0x01,MarÈcage
+String2=0x01,Mar√©cage
 String3=0x03,Moeras
 String4=0x00,Marsh
-String5=0x07,K‰rr
+String5=0x07,K√§rr
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
@@ -2190,7 +2190,7 @@ Xpm="32 32 4 1"
 Type=0x53
 String1=0x04,Island
 String2=0x03,Eiland
-String3=0x07,÷
+String3=0x07,√ñ
 String4=0x00,Island
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
@@ -2226,7 +2226,7 @@ Xpm="0 0 2 0"
 "1 c #BBBBBB"
 "2 c #666666"
 String1=0x00,Road
-String2=0x07,V‰g
+String2=0x07,V√§g
 ExtendedLabels=Y
 FontStyle=Default
 CustomColor=No
@@ -2242,7 +2242,7 @@ Xpm="0 0 2 0"
 "1 c #9999DD"
 "2 c #666666"
 String1=0x00,Motorway
-String2=0x07,Motorv‰g
+String2=0x07,Motorv√§g
 ExtendedLabels=Y
 FontStyle=Default
 CustomColor=No
@@ -2258,7 +2258,7 @@ Xpm="0 0 2 0"
 "1 c #99DD99"
 "2 c #666666"
 String1=0x00,Trunk
-String2=0x07,Riksv‰g
+String2=0x07,Riksv√§g
 ExtendedLabels=Y
 FontStyle=Default
 CustomColor=No
@@ -2274,7 +2274,7 @@ Xpm="0 0 2 0"
 "1 c #FF5A5A"
 "2 c #666666"
 String1=0x00,Primary
-String2=0x07,Huvudv‰g
+String2=0x07,Huvudv√§g
 ExtendedLabels=Y
 FontStyle=Default
 CustomColor=No
@@ -2290,7 +2290,7 @@ Xpm="0 0 2 0"
 "1 c #FFBF6D"
 "2 c #666666"
 String1=0x00,Secondary
-String2=0x07,Landsv‰g
+String2=0x07,Landsv√§g
 ExtendedLabels=Y
 FontStyle=Default
 CustomColor=No
@@ -2306,7 +2306,7 @@ Xpm="0 0 2 0"
 "1 c #FFFF66"
 "2 c #666666"
 String1=0x00,Tertiary
-String2=0x07,Terti‰r v‰g
+String2=0x07,Terti√§r v√§g
 ExtendedLabels=Y
 FontStyle=Default
 CustomColor=No
@@ -2322,7 +2322,7 @@ Xpm="0 0 2 0"
 "1 c #FFFFFF"
 "2 c #C2C2C2"
 String1=0x00,Minor
-String2=0x07,Mindre v‰g
+String2=0x07,Mindre v√§g
 ExtendedLabels=Y
 FontStyle=Default
 CustomColor=No
@@ -2341,9 +2341,9 @@ Xpm="32 3 2  1"
 ;12345678901234567890123456789012
 String1=0x04,service road
 String2=0x03,toegangsweg
-String3=0x02,Zufahrtsstraﬂe
+String3=0x02,Zufahrtsstra√üe
 String4=0x00,Service road
-String5=0x07,Servicev‰g
+String5=0x07,Servicev√§g
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=No
@@ -2359,7 +2359,7 @@ Xpm="0 0 2 0"
 "1 c #99DD99"
 "2 c #666666"
 String1=0x00,Trunk link
-String2=0x07,Riksv‰gsl‰nk
+String2=0x07,Riksv√§gsl√§nk
 ExtendedLabels=Y
 FontStyle=Default
 CustomColor=No
@@ -2375,7 +2375,7 @@ Xpm="0 0 2 0"
 "1 c #9999DD"
 "2 c #666666"
 String1=0x00,Motorway link
-String2=0x07,Motorv‰gsl‰nk
+String2=0x07,Motorv√§gsl√§nk
 ExtendedLabels=Y
 FontStyle=Default
 CustomColor=No
@@ -2398,9 +2398,9 @@ Xpm="32 4 4  1"
 String1=0x04,unpaved road
 String2=0x03,onverharde weg
 String3=0x02,Unbefestigter Weg
-String4=0x01,Piste sans revÍtement
+String4=0x01,Piste sans rev√™tement
 String5=0x00,Unpaved road
-String6=0x07,Grusv‰g
+String6=0x07,Grusv√§g
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=No
@@ -2460,7 +2460,7 @@ String1=0x04,cycleway
 String2=0x03,Fietspad
 String3=0x02,Radweg
 String4=0x00,Cycleway
-String5=0x07,Cykelv‰g
+String5=0x07,Cykelv√§g
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=No
@@ -2476,9 +2476,9 @@ Xpm="0 0 2 0"
 "2 c #414141"
 String1=0x04,pedestrian zone
 String2=0x03,Voetgangerszone
-String3=0x02,Fuﬂg‰ngerzone
+String3=0x02,Fu√üg√§ngerzone
 String4=0x00,Pedestrian zone
-String5=0x07,GÂngbana
+String5=0x07,G√•ngbana
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=No
@@ -2563,7 +2563,7 @@ String1=0x04,stream
 String2=0x03,beek,sloot
 String3=0x02,Bach
 String4=0x00,Stream
-String5=0x07,B‰ck
+String5=0x07,B√§ck
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=Day
@@ -2581,7 +2581,7 @@ Xpm="32 2 2  1"
 "!!!!!!!!        !!!!!!!!        "
 ;12345678901234567890123456789012
 String1=0x00,Ferry
-String2=0x07,F‰rja
+String2=0x07,F√§rja
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=No
@@ -2599,9 +2599,9 @@ Xpm="32 1 4  1"
 "!!!!!!!!   !!   !!!!!!!!   !!   "
 ;12345678901234567890123456789012
 String1=0x04,Boundary
-String2=0x01,FrontiËre communale
+String2=0x01,Fronti√®re communale
 String3=0x03,Grens
-String4=0x07,Gr‰ns
+String4=0x07,Gr√§ns
 String5=0x00,Boundary
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
@@ -2620,9 +2620,9 @@ Xpm="32 1 4  1"
 "!!!!!!    !     !!!!!!          "
 ;12345678901234567890123456789012
 String1=0x04,County boundary
-String2=0x01,FrontiËre dÈpartementale
+String2=0x01,Fronti√®re d√©partementale
 String3=0x03,Provinciegrens
-String4=0x07,L‰nsgr‰ns
+String4=0x07,L√§nsgr√§ns
 String5=0x00,County boundary
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
@@ -2643,10 +2643,10 @@ Xpm="32 5 2  1"
 "! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! "
 ;12345678901234567890123456789012
 String1=0x04,National boundary
-String2=0x01,FrontiËre nationale
+String2=0x01,Fronti√®re nationale
 String3=0x03,Landsgrens
 String4=0x00,National boundary
-String5=0x07,Landsgr‰ns
+String5=0x07,Landsgr√§ns
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
@@ -2662,9 +2662,9 @@ Xpm="0 0 2 0"
 "2 c #00008B"
 String1=0x04,river
 String2=0x03,rivier
-String3=0x02,Fluﬂ
+String3=0x02,Flu√ü
 String4=0x00,River
-String5=0x07,≈
+String5=0x07,√Ö
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=Day
@@ -2726,7 +2726,7 @@ Xpm="32 3 2  1"
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 ;12345678901234567890123456789012
 String1=0x00,Pipeline
-String2=0x07,Rˆrledning
+String2=0x07,R√∂rledning
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
@@ -2816,7 +2816,7 @@ Xpm="32 10 4  1"
 ;12345678901234567890123456789012
 String1=0x04,Bridge
 String2=0x03,Brug
-String3=0x02,Br¸cke
+String3=0x02,Br√ºcke
 String4=0x00,Bridge
 String5=0x07,Brygga
 ExtendedLabels=Y
@@ -2905,9 +2905,9 @@ Xpm="32 4 2  1"
 ;12345678901234567890123456789012
 String1=0x04,Road under construction
 String2=0x03,Weg in aanleg
-String3=0x02,Straﬂe im Bau
+String3=0x02,Stra√üe im Bau
 String4=0x00,Road under construction
-String5=0x07,V‰gbygge
+String5=0x07,V√§gbygge
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=No
@@ -3018,7 +3018,7 @@ String1=0x04,railway
 String2=0x03,spoorweg
 String3=0x02,Eisenbahn
 String4=0x00,Railway
-String5=0x07,SpÂrv‰g
+String5=0x07,Sp√•rv√§g
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
@@ -3039,7 +3039,7 @@ String1=0x04,railway
 String2=0x03,spoorweg
 String3=0x02,Eisenbahn
 String4=0x00,Railway
-String5=0x07,SpÂrv‰g
+String5=0x07,Sp√•rv√§g
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
@@ -3055,7 +3055,7 @@ Xpm="32 1 2  1"
 "!!!!!!!!        !!!!!!!!        "
 ;12345678901234567890123456789012
 String1=0x00,Ferry
-String2=0x07,F‰rja
+String2=0x07,F√§rja
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
@@ -3073,7 +3073,7 @@ Xpm="32 3 2  1"
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 ;12345678901234567890123456789012
 String1=0x00,unclassified
-String2=0x07,oklassificerad v‰g
+String2=0x07,oklassificerad v√§g
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
@@ -3182,7 +3182,7 @@ Xpm="0 0 2 0"
 "1 c #007A00"
 "2 c #414141"
 String1=0x00,Motorroad
-String2=0x07,Motorv‰g
+String2=0x07,Motorv√§g
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
@@ -3198,7 +3198,7 @@ Xpm="0 0 2 0"
 "1 c #007A00"
 "2 c #313131"
 String1=0x00,Motorway
-String2=0x07,Motorv‰g
+String2=0x07,Motorv√§g
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
@@ -3214,7 +3214,7 @@ Xpm="0 0 2 0"
 "1 c #007A00"
 "2 c #414141"
 String1=0x00,Motorroad
-String2=0x07,Motorv‰g
+String2=0x07,Motorv√§g
 ExtendedLabels=Y
 FontStyle=Default
 CustomColor=No
@@ -3633,7 +3633,7 @@ DayXpm="24 24 2 1"   Colormode=16
 [_point]
 Type=0x02f
 SubType=0x01
-String1=0x07,Br‰nsle
+String1=0x07,Br√§nsle
 String2=0x00,Fuel
 ExtendedLabels=Y
 FontStyle=Default
@@ -3982,7 +3982,7 @@ Type=0x02f
 SubType=0x15
 String1=0x04,Recycling
 String2=0x00,Recycling
-String3=0x07,≈tervinning
+String3=0x07,√Ötervinning
 ExtendedLabels=Y
 FontStyle=Default
 CustomColor=No
@@ -4022,7 +4022,7 @@ Type=0x02f
 SubType=0x17
 String1=0x04,bus stop
 String2=0x03,bushalte
-String3=0x07,BusshÂllsplats
+String3=0x07,Bussh√•llsplats
 String4=0x00,Bus stop
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
@@ -4232,7 +4232,7 @@ DayXpm="20 20 4 1"   Colormode=16
 [_point]
 Type=0x046
 SubType=0x01
-String1=0x07,CafÈ
+String1=0x07,Caf√©
 String2=0x00,Cafe
 ExtendedLabels=Y
 FontStyle=Default
@@ -4416,7 +4416,7 @@ DayXpm="16 16 42 2"   Colormode=16
 [_point]
 Type=0x048
 SubType=0x03
-String1=0x07,Fj‰llstuga
+String1=0x07,Fj√§llstuga
 String2=0x00,Alpine hut
 ExtendedLabels=Y
 FontStyle=Default
@@ -4610,7 +4610,7 @@ DayXpm="16 16 3 1"   Colormode=16
 [_point]
 Type=0x059
 SubType=0x05
-String1=0x07,Flygf‰lt
+String1=0x07,Flygf√§lt
 String2=0x00,Aerodrome
 ExtendedLabels=Y
 FontStyle=Default
@@ -4642,7 +4642,7 @@ DayXpm="16 16 3 1"   Colormode=16
 [_point]
 Type=0x064
 SubType=0x0f
-String1=0x07,PostlÂda
+String1=0x07,Postl√•da
 String2=0x00,Post box
 ExtendedLabels=Y
 FontStyle=Default
@@ -4699,7 +4699,7 @@ DayXpm="7 7 2 1"   Colormode=16
 [_point]
 Type=0x064
 SubType=0x18
-String1=0x07,V‰derkvarn
+String1=0x07,V√§derkvarn
 String2=0x00,Windmill
 ExtendedLabels=Y
 FontStyle=Default
@@ -4780,7 +4780,7 @@ Type=0x065
 SubType=0x0c
 String1=0x04,Island
 String2=0x00,Island
-String3=0x07,÷
+String3=0x07,√ñ
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=No
@@ -4820,7 +4820,7 @@ Type=0x065
 SubType=0x0f
 String1=0x04,Basin
 String2=0x00,Basin
-String3=0x07,Bass‰ng
+String3=0x07,Bass√§ng
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
@@ -5046,7 +5046,7 @@ DayXpm="24 24 2 1"   Colormode=16
 [_point]
 Type=0x066
 SubType=0x19
-String1=0x07,Tr‰d
+String1=0x07,Tr√§d
 String2=0x00,Tree
 ExtendedLabels=Y
 FontStyle=Default
