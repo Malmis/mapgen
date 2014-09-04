@@ -27,6 +27,7 @@ splitterrev=412 # Could be changed to latest splitter revision.
 country=sweden # countryname in lowercase
 countryname=Sweden # Countryname starts with capital letter (i.e. Sweden, Denmark, Finland, Norway etc.)
 countryabr=SWE # Country abbreviation with 3 uppercase letters (i.e. SWE, DEN, FIN, NOR etc.
+prodid=1
 famid=355 # Family ID
 mapid=33110000 # Map ID - change for every map, otherwise it will conflict with other maps and crash GPS. (i.e. 33110000 for Sweden, 33220000 for Denmark, 33330000 for Finland, 33440000 for Norway etc.)
 topoid=22110000 # Map ID for Topo
@@ -35,6 +36,7 @@ coast=europe # could be planet or europe (Important to use planet if you create 
 stylefile1=malmis.zip
 stylefile2=malmis.txt
 creator=Malmis # Your nickname
+series=$countryname-OSM-map
 
 # -- do not change -- #
 if [ -z "$javacmd" ] ; then
@@ -51,12 +53,11 @@ topodir=$workdir/topo/$country
 coastfile=coastlines_$coast-latest.osm.pbf
 stylefile=$styles/$stylefile1
 inputfile=$styles/$stylefile2
-productid=1
+productid=$prodid
 familyid=$famid
 mapname=$mapid
-maxnodes=1000000
-overlap=0
-maxareas=255
+maxnodes=1500000
+maxareas=2048
 statusfreq=600
 countryname=$countryname
 familyname=OSM-$countryname-$DATE
@@ -65,13 +66,14 @@ areaname=$countryname
 copyright="http://www.openstreetmap.org/copyright"
 description="$DATE-$creator-OpenStreetMap"
 
-map_split="--mapid=$mapid --output=pbf --max-nodes=$maxnodes --overlap=$overlap --keep-complete=true --max-areas=$maxareas --status-freq=$statusfreq --no-trim"
+map_split="--mapid=$mapid --output=pbf --max-nodes=$maxnodes --keep-complete=true --max-areas=$maxareas --status-freq=$statusfreq --no-trim"
 map_mkgmap0="--input-file=$inputfile --style-file=$stylefile --check-styles --max-jobs --draw-priority=20 --route --latin1"
-map_mkgmap1="--copyright-message=$copyright --generate-sea=extend-sea-sectors,floodblocker,land-tag=natural=background"
-map_mkgmap2="--drive-on-right --check-roundabouts --road-name-pois --ignore-osm-bounds --make-poi-index --adjust-turn-headings --ignore-maxspeeds --ignore-turn-restrictions --coastlinefile=$coastline/$coastfile"
-map_mkgmap3="--product-id=$productid --family-id=$familyid --mapname=$mapname --country-name=$countryname --family-name=$familyname --country-abbr=$countryabbr --area-name=$areaname --nsis --tdbfile"
-map_mkgmap4="--remove-ovm-work-files --location-autofill=bounds,nearest,is_in --name-tag-list=name:fi,name:sv,name:no,name:dk,name:en,name --description=$description --show-profiles=1 --gmapsupp -c new.args"
-map_merge="--show-profiles=1 --gmapsupp $countrydir/gmapsupp.img $topodir/srtm/gmapsupp.img"
+map_mkgmap1="--copyright-message=$copyright --generate-sea=extend-sea-sectors,floodblocker,land-tag=natural=background --process-destination --process-exits"
+# --ignore-maxspeeds --ignore-turn-restrictions --ignore-osm-bounds --nsis --tdbfile # Extras
+map_mkgmap2="--drive-on-right --check-roundabouts --road-name-pois --make-poi-index --adjust-turn-headings --preserve-element-order --make-opposite-cycleways --coastlinefile=$coastline/$coastfile"
+map_mkgmap3="--product-id=$productid --family-id=$familyid --mapname=$mapname --country-name=$countryname --family-name=$familyname --country-abbr=$countryabbr --area-name=$areaname --series-name=$series"
+map_mkgmap4="--remove-ovm-work-files --location-autofill=bounds,nearest,is_in --name-tag-list=name:fi,name:sv,name:no,name:dk,name:en,name --description=$description --tdbfile --show-profiles=1 --gmapsupp -c new.args"
+map_merge="--tdbfile --show-profiles=1 --gmapsupp $countrydir/gmapsupp.img $topodir/srtm/gmapsupp.img"
 
 topo_mkgmap="--max-jobs=2 --gmapsupp --mapname=$topoid --description=$countryname-Topographic"
 topo2_mkgmap="--area-name=$countryname --read-config=$styles/topo/options --style-file=$styles/topo $styles/topo.txt $topodir/srtm/*.osm.pbf"
